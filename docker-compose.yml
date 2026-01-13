@@ -1,5 +1,5 @@
 services:
-  infra-test:
-    image: nginx:alpine
+  backend:
+    build: ./backend
     ports:
-      - "8080:80"
+      - "8000:8000"
