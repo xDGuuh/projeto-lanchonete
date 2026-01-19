@@ -1,4 +1,59 @@
+# =====================
+# Environment / Secrets
+# =====================
 .env
-.venv
+.env.*
+*.env
+
+# =====================
+# Python
+# =====================
+.venv/
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# =====================
+# Alembic
+# =====================
+alembic/versions/__pycache__/
+
+# =====================
+# Node / Frontend
+# =====================
 node_modules/
+.next/
+dist/
+build/
+
+# =====================
+# Docker
+# =====================
+*.log
+docker-data/
+postgres_data/
+**/postgres_data/
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# =====================
+# Testing / Coverage
+# =====================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# =====================
+# Misc
+# =====================
+*.sqlite3
+

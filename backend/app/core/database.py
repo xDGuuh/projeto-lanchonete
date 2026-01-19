@@ -1,14 +1,18 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
-from app.models.base import Base
+from dotenv import load_dotenv
+import os
+from sqlalchemy.ext.asyncio import create_async_engine
 
-DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5432/lanchonete"
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL não definida no ambiente")
+
+ASYNC_DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://")
 
 engine = create_async_engine(
-    DATABASE_URL,
+    ASYNC_DATABASE_URL,
     echo=False,
-)
-
-asyncSessionLocal = async_sessionmaker(
-    engine, 
-    expire_on_commit=False,
+    pool_pre_ping=True,
 )

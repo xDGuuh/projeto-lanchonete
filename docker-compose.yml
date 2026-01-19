@@ -1,8 +1,8 @@
-version: "3.9"
-
 services:
   backend:
     build: ./backend
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     depends_on:
@@ -10,7 +10,6 @@ services:
 
   db:
     image: postgres:16
-    container_name: lanchonete_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
